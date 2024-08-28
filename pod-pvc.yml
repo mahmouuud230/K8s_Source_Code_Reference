@@ -1,0 +1,16 @@
+
+kind: Pod
+apiVersion: v1
+metadata:
+ name: pod-pvc
+spec:
+ containers:
+  - image: nginx
+    name: c1
+    volumeMounts:  # directory on the container that should preserve daat on the volume
+     - mountPath: "/data"
+       name: my-volume
+ volumes:
+  - name: my-volume
+    persistentVolumeClaim:
+     claimName: pvc
